@@ -48,34 +48,34 @@ if __name__ == '__main__':
         help = 'A boolean option.',
     )
 
+    # Adding an optional keyword argument with the short and long flags "-q" and "--quiet"
+    parser.add_argument(
+        '-q', '--quiet',
+        default = False,
+        action = 'store_true',
+        help = 'Print a quiet message instead.',
+    )
+     
     # Parse the command-line arguments into a 'dict'-like container
     args = parser.parse_args()
-
-    # What does `args` object "look" like?
-    print(
-        "The args after being processed by the argparse parser object:\n",
-        args)
-
-    # We access the arguments specified on the command line (or the default
-    # values if they were not used) by using `args.` syntax.
-    #
+    
+    if args.quiet:
+        print("Shhh. Be vewy, vewy quiet, I'm hunting wabbits...")
+    else:
+        # What does `args` object "look" like?
+        print(
+            "The args after being processed by the argparse parser object:\n",
+            args)
+         
     # For positional arguments (like the first `add_argument` above), we access
     # the value of the arugment using the name we provided as the first
     # argument ("paths")
-    print("Paths:", args.file_path)
-
+        print("Paths:", args.file_path)
+         
     # For keyword arguments (like all the rest of the `add_argument` calls
     # above), we access the value of the argument using the the long form of
     # the keyword flag (removing the first two dashes and replacing any other
     # dashes with underscores)
-    print("Number:", args.number)
-    print("Threshold:", args.threshold)
-    print("I am cool?", args.i_am_cool)
-
-    # Adding an optional keyword argument with the short and long flags "-q" and "--quiet"
-parser.add_argument(
-    '-q', '--quiet',
-    default=False,
-    action='store_true',
-    help='Print a quiet message instead.',
-)
+        print("Number:", args.number)
+        print("Threshold:", args.threshold)
+        print("I am cool?", args.i_am_cool)
