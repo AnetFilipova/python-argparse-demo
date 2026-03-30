@@ -71,3 +71,8 @@ if __name__ == '__main__':
     print("Number:", args.number)
     print("Threshold:", args.threshold)
     print("I am cool?", args.i_am_cool)
+
+    # Adding an optional keyword argument with the short and long flags "-q" and "--quiet"
+    parser.add_argument(
+        '-q', '--quiet',     # The flags used to specify this option
+    )
